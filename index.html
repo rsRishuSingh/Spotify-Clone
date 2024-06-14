@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" sizes="32x32" type="image/png"
+        href="https://open.spotifycdn.com/cdn/images/favicon32.b64ecc03.png" />
+    <link rel="icon" sizes="16x16" type="image/png"
+        href="https://open.spotifycdn.com/cdn/images/favicon16.1c487bff.png" />
+
+
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div class="flex-row divider">
+
+
+        <div class="left-side  position-main transition-3 hidden ">
+            <div class="home background-black font-white border-radius-10 margin flex-col">
+
+                <div class="home-options flex-row hover-background cursor-pointer hover-background-green">
+                    <img class="left-svg " src="Logos/logo.svg" alt="logo">
+                    <div>Spotify</div>
+                </div>
+                <div class="home-options flex-row home-logo hover-background hover-background-green cursor-pointer">
+                    <img class="left-svg " src="Logos/home.svg" alt="home">
+                    <div>Home</div>
+                </div>
+                <div class="home-options flex-row hover-background hover-background-green cursor-pointer">
+                    <img class="left-svg " src="Logos/search.svg" alt="search">
+                    <div>
+                        Search</div>
+                </div>
+            </div>
+            <div class="demo"></div>
+            <div class="libraryContainer border-radius-10 background-black margin flex-col align-items-center">
+                <div class="library font-white flex-row">
+
+                    <img class="left-svg " src="Logos/library.svg" alt="library">
+                    <div>Your Library</div>
+                    <img class="left-svg transition" src="Logos/plus.svg" alt="createplaylist">
+
+                </div>
+
+                <div class="songs-list   background-grey border-radius-5 ">
+
+
+
+
+
+                </div>
+
+
+                <div class="external-links flex-col font-small ">
+                    <ul class="list flex-row">
+                        <li class="margin2 hover-font-style"><a class="a " href="#top">Legal</a></li>
+                        <li class="margin2 hover-font-style"><a class="a " href="#top">Privacy Policy</a></li>
+                        <li class="margin2 hover-font-style"><a class="a " href="#top">Safety Centre</a></li>
+                        <li class="margin2 hover-font-style"><a class="a " href="#top">Cookie</a></li>
+                        <li class="margin2 hover-font-style"><a class="a " href="#top">About</a></li>
+                        <li class="margin2 hover-font-style"><a class="a " href="#top">Accessbility</a></li>
+                        <li class="margin2 hover-font-style"><a class="a " href="#top">License</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="right-side margin background-black border-radius-10 position-main">
+            <header class="flex-row background-black-original ">
+
+                <div class="direction flex-row align-items-center">
+                    <img src="Logos/hamburger.svg" width="21px"
+                        class=" ham-Burger border-radius-20  hover-fliter-invert hover-background-black"
+                        alt="hamburger">
+                    <img class="right-svg hover-background-white  border-radius-20 hover-fliter-invert-2"
+                        src="Logos/left.svg " alt="move left" width="16px">
+                    <img class="right-svg hover-background-white  border-radius-20 hover-fliter-invert-2"
+                        src="Logos/right.svg " alt="move right" width="16px">
+
+                </div>
+                <div class="main-buttons ">
+                    <button
+                        class=" border-radius-20   border font-black background-white hover-font-style">Login</button>
+                    <button class=" border-radius-20  border  font-white background-blue hover-font-style">Sign
+                        Up</button>
+                </div>
+
+            </header>
+            <div class="cardContainer flex-col class bor">
+                <div class="section-title font-large-white flex-row">Popular Songs</div>
+                <div class="section-1 flex-row wrap ">
+
+
+                </div>
+
+            </div>
+            <div
+                class="play-bar-container background-shady-grey flex-col align-items-center border-radius-5 justify-content-center">
+                <div class="cursor-pointer status-bar background-white">
+                </div>
+                <div class="cursor-pointer circle background-white border-radius-20 transition-4"></div>
+
+                <div class="play-bar flex-row align-items-center">
+                    <div class="song-info-title "> <span class=" font-white-small"> </span><span
+                            class="font-grey"></span>
+                    </div>
+                    <div class="controls flex-row justify-content-center">
+                        <img src="Logos/prev.svg" class=" cursor-pointer controls-prev-song left-svg invert-0"
+                            alt="previous song">
+                        <img src="Logos/play.svg" class=" cursor-pointer controls-play-song left-svg invert-0"
+                            alt="play song">
+                        <img src="Logos/next.svg" class=" cursor-pointer controls-next-song left-svg invert-0"
+                            alt="next song">
+                    </div>
+                    <div class="song-info-duration font-white-small "></div>
+
+                </div>
+
+            </div>
+        </div>
+        <script src="script.js"></script>
+</body>3
+
+</html>
