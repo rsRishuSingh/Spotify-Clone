@@ -1,6 +1,7 @@
 
 let audio = new Audio();
-
+// let source = "http://127.0.0.1:5500/audio/"
+let source = "http://192.168.153.250:5500/audio/"
 function getKeyByValue(song_data, path) {
     for (let index = 0; index < Object.keys(song_data).length; index++) {
         if (song_data[index].path == path) {
@@ -51,7 +52,7 @@ function playMusic(linker1, linker2, songs, pauseOnLoad = true) {
     song_info(linker1, linker2)
 
     let path = linker1 + "_" + linker2 + ".mp3";
-    path = 'http://127.0.0.1:5500/audio/' + path.replaceAll(" ", "%20")
+    path = source + path.replaceAll(" ", "%20")
     audio.src = path
     if (pauseOnLoad == true) {
         audio.play();
@@ -107,7 +108,7 @@ function playMusic(linker1, linker2, songs, pauseOnLoad = true) {
 }
 
 async function getSongs() {
-    let file = await fetch("http://127.0.0.1:5500/audio/")
+    let file = await fetch(source)
     let respose = await file.text()
 
     let songs_images = ['https://i.scdn.co/image/ab67616d00001e026404721c1943d5069f0805f3', 'https://i.scdn.co/image/ab67616d00001e022ebe695c153f347cf257fc28', 'https://i.scdn.co/image/ab67616d00001e027ea5a422c7cae22626a36893', 'https://i.scdn.co/image/ab67616d00001e02f78d8d3dd6f83183ec4309e2', 'https://i.scdn.co/image/ab67616d00001e028074d75f0e453804efcec351', 'https://i.scdn.co/image/ab67616d00001e02f19e3dac6714edfe85ad9847', 'https://i.scdn.co/image/ab67616d00001e02a6a151ed88a170ae3a81eff5', '	https://i.scdn.co/image/ab67616d00001e020181987950c64ae28aefbd1a']
