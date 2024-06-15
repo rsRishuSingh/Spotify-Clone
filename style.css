@@ -235,7 +235,17 @@
      transition: all 0.6s linear;
  }
 
+ .transition-5 {
+     transition: all 0.3s ease-in-out;
+ }
 
+ .hover-opacity:hover {
+     opacity: 0.8;
+ }
+
+ .tranform {
+     transform: scale(0.9);
+ }
 
  .library :last-child:hover {
      /* transform: rotate(90); */
@@ -575,6 +585,10 @@
      /* margin: auto; */
  }
 
+ /* .song-info-duration {
+     text-align: center;
+ } */
+
  .status-bar {
      height: 3px;
      width: 99%;
@@ -593,7 +607,7 @@
 
  @media only screen and (max-width : 1100px) {
      .left-side {
-         width: 42vw;
+         width: 44vw;
      }
 
      .home {
@@ -620,6 +634,9 @@
 
      }
 
+     .direction>img {
+         padding: 9px 15px;
+     }
 
      .play-bar-container {
 
@@ -636,29 +653,23 @@
  @media only screen and (max-width : 810px) {
 
      .left-side {
-         width: 60%;
+         width: 65%;
      }
 
      .home {
 
-         width: 60%;
+         width: 65%;
      }
 
      .libraryContainer {
 
-         width: 60%;
+         width: 65%;
 
 
 
      }
 
-     .demo {
-         height: 100%;
-         width: 60%;
-         position: absolute;
-         z-index: 1;
-         background-color: black;
-     }
+
 
 
      .right-side {
@@ -681,7 +692,9 @@
 
      .status-bar {
 
-         width: 96%;
+         width: 99%;
+         height: 4px;
+         /* margin: 2px; */
 
      }
 
@@ -703,9 +716,14 @@
 
      .home {
          top: 65px;
-         /* padding-bottom: 30px; */
+         padding-bottom: 13px;
          border-radius: none;
+         border-radius: 0px !important;
      }
+
+     /* .home-options {
+         width: 78%;
+     } */
 
      .left-slide {
          left: 0px;
@@ -714,14 +732,20 @@
      .libraryContainer {
          z-index: 10;
          top: 198px;
+         border-radius: 0px !important;
      }
 
      .play-bar {
          justify-content: space-between;
      }
 
+     .circle {
+         padding: 9px;
+         top: -7px;
+     }
+
      .play-bar>* {
          width: 157px;
-         /
+
      }
  }

@@ -1,7 +1,7 @@
 
 let audio = new Audio();
-// let source = "http://127.0.0.1:5500/audio/"
-let source = "http://192.168.153.250:5500/audio/"
+let source = "audio/"
+// let source = "http://192.168.153.250:5500/audio/"
 function getKeyByValue(song_data, path) {
     for (let index = 0; index < Object.keys(song_data).length; index++) {
         if (song_data[index].path == path) {
@@ -140,7 +140,7 @@ async function addSongs(songs) {
     let list = document.getElementsByClassName("songs-list")[0];
     for (i in songs) {
         let div = document.createElement('div');
-        div.classList.add('song', 'flex-row', 'align-items-center', 'background-black', 'border-radius-5', 'cursor-pointer', 'hover-fliter-invert');
+        div.classList.add('song', 'flex-row', 'align-items-center', 'background-black', 'border-radius-5', 'cursor-pointer', 'hover-fliter-invert', 'transition-2');
         div.innerHTML = ` 
     <img src="Logos/music.svg" alt="music">
     <div class="song-info flex-col border-radius-5">
