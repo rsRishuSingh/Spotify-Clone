@@ -76,19 +76,19 @@
 
                 <div class="direction flex-row align-items-center">
                     <img src="Logos/hamburger.svg" width="21px"
-                        class=" ham-Burger border-radius-20  hover-fliter-invert hover-background-black transition-2"
+                        class=" ham-Burger border-radius-20  hover-fliter-invert hover-background-black transition-2 cursor-pointer"
                         alt="hamburger">
-                    <img class="right-svg hover-background-white  border-radius-20 hover-fliter-invert-2 transition-2"
+                    <img class="right-svg hover-background-white  border-radius-20 hover-fliter-invert-2 transition-2 cursor-pointer"
                         src="Logos/left.svg " alt="move left" width="16px">
-                    <img class="right-svg hover-background-white  border-radius-20 hover-fliter-invert-2 transition-2"
+                    <img class="right-svg hover-background-white  border-radius-20 hover-fliter-invert-2 transition-2 cursor-pointer"
                         src="Logos/right.svg " alt="move right" width="16px">
 
                 </div>
                 <div class="main-buttons ">
                     <button
-                        class="transition-5  hover-opacity border-radius-20   border font-black background-white hover-font-style">Login</button>
+                        class="transition-5  hover-opacity border-radius-20   border font-black background-white hover-font-style cursor-pointer">Login</button>
                     <button
-                        class="transition-5  hover-opacity border-radius-20  border  font-white background-blue hover-font-style">Sign
+                        class="transition-5  hover-opacity border-radius-20  border  font-white background-blue hover-font-style cursor-pointer">Sign
                         Up</button>
                 </div>
 
@@ -111,16 +111,25 @@
                     <div class="song-info-title "> <span class=" font-white-small"> </span><span
                             class="font-grey"></span>
                     </div>
-                    <div class="controls flex-row justify-content-center">
+                    <div class="controls flex-row justify-content-center align-items-center">
                         <img src="Logos/prev.svg"
                             class=" transition-2 cursor-pointer controls-prev-song left-svg invert-0"
                             alt="previous song">
-                        <img src="Logos/play.svg" class="  transition-2 controls-play-song left-svg invert-0"
-                            alt="play song">
-                        <img src="Logos/next.svg" class="  transition-2 controls-next-song left-svg invert-0"
-                            alt="next song">
+                        <img src="Logos/play.svg"
+                            class="  transition-2 controls-play-song left-svg invert-0 cursor-pointer" alt="play song">
+                        <img src="Logos/next.svg"
+                            class="  transition-2 controls-next-song left-svg invert-0 cursor-pointer" alt="next song">
                     </div>
-                    <div class="song-info-duration font-white-small "></div>
+                    <div class="volume-duration-controls flex-col align-items-center justify-content-center ">
+                        <div class="volume-controls flex-row align-items-center">
+                            <div class="song-info-duration font-white-small "></div>
+                            <img src="Logos/volumeOn.svg" alt="VolumeOn" width="22" class="cursor-pointer volume-icon">
+                        </div>
+                        <div class="range flex-row align-items-center justify-content-center">
+
+                            <input type="range" id="volume-bar" name="volume" class="cursor-pointer ">
+                        </div>
+                    </div>
 
                 </div>
 

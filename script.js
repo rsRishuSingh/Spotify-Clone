@@ -31,23 +31,10 @@ function song_info(linker1, linker2) {
     document.querySelector('.song-info-title').firstElementChild.innerHTML = linker1;
     document.querySelector('.song-info-title').firstElementChild.nextElementSibling.innerHTML = ` - ${linker2}`;
     document.querySelector('.song-info-duration').innerHTML = "00:00 / 00:00";
-    audio.addEventListener("timeupdate", () => {
-        document.querySelector('.song-info-duration').innerHTML = secondsToMinutesSeconds(audio.currentTime) + " / " + secondsToMinutesSeconds(audio.duration);
-
-        document.querySelector('.circle').style.left = (audio.currentTime / audio.duration) * 98 + "%";
-        if (audio.currentTime / audio.duration == 1) {
-            document.querySelector('.circle').style.left = "0px";
-            document.querySelector('.controls-play-song').src = 'Logos/play.svg'
-            document.querySelector('.song-info-duration').innerHTML = "00:00 / 00:00";
-
-
-        }
-
-    })
-
-
 
 }
+
+
 function playMusic(linker1, linker2, songs, pauseOnLoad = true) {
     song_info(linker1, linker2)
 
@@ -72,38 +59,49 @@ function playMusic(linker1, linker2, songs, pauseOnLoad = true) {
     if (count > 0) {
         document.querySelector('.controls-prev-song').style.opacity = 1
         document.querySelector('.controls-prev-song').addEventListener('click', () => {
-            // audio.pause();
-            // audio.src = songs[count - 1].path;
-            // console.log(count)
-            // song_info(songs[count - 1].name, songs[count - 1].artist)
-
-            // audio.play()
             playMusic(songs[count - 1].name, songs[count - 1].artist, songs)
-
-
         })
     }
     if (count < Object.keys(songs).length - 1) {
         document.querySelector('.controls-next-song').style.opacity = 1
         document.querySelector('.controls-next-song').addEventListener('click', () => {
-            // audio.pause();
-            // audio.src = songs[count + 1].path;
-            // console.log(count)
-            // song_info(songs[count + 1].name, songs[count + 1].artist)
-
-            // audio.play()
             playMusic(songs[count + 1].name, songs[count + 1].artist, songs)
-
-
-
         })
     }
+    audio.addEventListener("timeupdate", () => {
+        document.querySelector('.song-info-duration').innerHTML = secondsToMinutesSeconds(audio.currentTime) + " / " + secondsToMinutesSeconds(audio.duration);
+
+        document.querySelector('.circle').style.left = (audio.currentTime / audio.duration) * 98 + "%";
+        if (audio.currentTime / audio.duration == 1) {
+            document.querySelector('.circle').style.left = "0px";
+            // document.querySelector('.controls-play-song').src = 'Logos/play.svg'
+            document.querySelector('.song-info-duration').innerHTML = "00:00 / 00:00";
+            let count = getKeyByValue(songs, audio.src);
+            if (count < Object.keys(songs).length - 1) {
+                playMusic(songs[count + 1].name, songs[count + 1].artist, songs)
+            }
+            else {
+                document.querySelector('.controls-play-song').src = 'Logos/play.svg'
+
+            }
 
 
 
+        }
 
+    })
+    document.querySelector('.volume-icon').addEventListener('click', () => {
+        const volumeIcon = document.querySelector('.volume-icon');
+        const volumeIconSrc = volumeIcon.src.split('/').pop(); // Extract the file name from the URL
 
-
+        if (volumeIconSrc === 'volumeOn.svg') {
+            volumeIcon.src = 'Logos/volumeOff.svg';
+            audio.volume = 0;
+        } else {
+            volumeIcon.src = 'Logos/volumeOn.svg';
+            audio.volume = 0.5; // Volume should be between 0 and 1
+        }
+    });
 
 }
 
@@ -192,6 +190,7 @@ async function addSongs(songs) {
         document.querySelector(".circle").style.left = percent + "%";
         audio.currentTime = ((audio.duration) * percent) / 100
     })
+
     document.querySelector(".ham-Burger").addEventListener("click", () => {
         document.querySelector(".left-side").classList.toggle("left-slide")
 
@@ -221,6 +220,14 @@ async function addSongs(songs) {
         })
 
     })
+    document.querySelector('#volume-bar').addEventListener('change', (e) => {
+        console.log(parseInt(e.target.value))
+        audio.volume = parseInt(e.target.value) / 100;
+    })
+
+
+
+
 
 
 
@@ -232,6 +239,7 @@ async function addSongs(songs) {
 }
 async function main() {
     let songs = await getSongs();
+    audio.volume = 0.5;
     playMusic(songs[0].name, songs[0].artist, songs, false);
     let message = await addSongs(songs);
     console.log(songs)

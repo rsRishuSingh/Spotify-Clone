@@ -19,6 +19,8 @@
      /* Dark color for the track */
  }
 
+
+
  body {
      background-color: #000000;
      font-family: CircularSp, Arial, Helvetica, sans-serif;
@@ -421,14 +423,15 @@
 
  }
 
- .direction {
+ /* .direction {
      padding: 10px;
      margin: 10px;
- }
+ } */
 
  .direction>img {
 
-     padding: 9px;
+     padding: 8px;
+     margin: 4px;
  }
 
  .main-buttons {
@@ -605,6 +608,33 @@
 
  }
 
+ .volume-controls {
+     justify-content: space-evenly;
+     height: 100%;
+     width: 100%;
+ }
+
+ /* .volume-duration-controls {
+
+     height: 100%;
+    
+ } */
+
+ .range {
+     /* row-gap: 30px; */
+     margin-bottom: 12px;
+
+ }
+
+
+ .range>input {
+     position: absolute;
+     bottom: 5px;
+     width: 80px;
+     transform: rotate(0deg);
+
+ }
+
  @media only screen and (max-width : 1100px) {
      .left-side {
          width: 44vw;
@@ -733,6 +763,12 @@
          z-index: 10;
          top: 198px;
          border-radius: 0px !important;
+     }
+
+     .play-bar-container {
+
+         height: 72px;
+
      }
 
      .play-bar {
