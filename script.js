@@ -1,4 +1,3 @@
-
 let audio = new Audio();
 let source = "audio/"
 // let source = "http://192.168.153.250:5500/audio/"
@@ -37,7 +36,6 @@ function song_info(linker1, linker2) {
 
 function playMusic(linker1, linker2, songs, pauseOnLoad = true) {
     song_info(linker1, linker2)
-
     let path = linker1 + "_" + linker2 + ".mp3";
     path = source + path.replaceAll(" ", "%20")
     audio.src = path
@@ -47,7 +45,25 @@ function playMusic(linker1, linker2, songs, pauseOnLoad = true) {
 
     }
 
+
     let count = getKeyByValue(songs, audio.src);
+    localStorage.setItem('Last_song', count)
+
+    let section_1 = document.getElementsByClassName("section-1")[0];
+    if (section_1.offsetWidth <= 490 && (count >= 0 || count <= Object.keys(songs).length - 1)) {
+
+        let div = document.createElement('div');
+        div.classList.add('card', 'flex-col', 'hover-background', 'border-radius-10', 'transition-2', 'card-mobile');
+        div.innerHTML = ` 
+ <img src="Logos/main-play.svg " alt="" class="play-svg border-radius-20 transition-3 cursor-pointer play-svg-mobile">
+                        <img class="border-radius-5"
+                            src="${songs[count].image}" alt="">
+                        <h1 class="font-white font-white-mobile">${songs[count].name}</h1>
+                        <div class="font-small-grey font-small-grey-mobile">${songs[count].artist}</div>`;
+
+        section_1.replaceChild(div, section_1.firstElementChild);
+
+    }
     console.log(count)
     if (count == 0) {
 
@@ -90,18 +106,22 @@ function playMusic(linker1, linker2, songs, pauseOnLoad = true) {
         }
 
     })
-    document.querySelector('.volume-icon').addEventListener('click', () => {
-        const volumeIcon = document.querySelector('.volume-icon');
-        const volumeIconSrc = volumeIcon.src.split('/').pop(); // Extract the file name from the URL
 
-        if (volumeIconSrc === 'volumeOn.svg') {
+
+    document.querySelector('#volume-bar').addEventListener('change', (e) => {
+        console.log(parseInt(e.target.value))
+        audio.volume = parseInt(e.target.value) / 100;
+        const volumeIcon = document.querySelector('.volume-icon');
+        if (parseInt(e.target.value) == 0) {
             volumeIcon.src = 'Logos/volumeOff.svg';
-            audio.volume = 0;
-        } else {
-            volumeIcon.src = 'Logos/volumeOn.svg';
-            audio.volume = 0.5; // Volume should be between 0 and 1
         }
-    });
+        else {
+            volumeIcon.src = 'Logos/volumeOn.svg';
+
+        }
+    })
+
+
 
 }
 
@@ -149,29 +169,44 @@ async function addSongs(songs) {
 
     }
     let section_1 = document.getElementsByClassName("section-1")[0];
+    if (section_1.offsetWidth > 490)
+        for (i in songs) {
+            let div = document.createElement('div');
+            div.classList.add('card', 'flex-col', 'hover-background', 'border-radius-10', 'transition-2');
+            div.innerHTML = ` 
+     <img src="Logos/main-play.svg " alt="" class="play-svg border-radius-20 transition-3 cursor-pointer">
+                            <img class="border-radius-5"
+                                src="${songs[i].image}" alt="">
+                            <h1 class="font-white">${songs[i].name}</h1>
+                            <div class="font-small-grey">${songs[i].artist}</div>`;
+            section_1.appendChild(div);
 
-    for (i in songs) {
-        let div = document.createElement('div');
-        div.classList.add('card', 'flex-col', 'hover-background', 'border-radius-10', 'transition-2');
-        div.innerHTML = ` 
- <img src="Logos/main-play.svg " alt="" class="play-svg border-radius-20 transition-3 cursor-pointer">
-                        <img class="border-radius-5"
-                            src="${songs[i].image}" alt="">
-                        <h1 class="font-white">${songs[i].name}</h1>
-                        <div class="font-small-grey">${songs[i].artist}</div>`;
-        section_1.appendChild(div);
+        }
+    else {
+        //         let div = document.createElement('div');
+        //         div.classList.add('card', 'flex-col', 'hover-background', 'border-radius-10', 'transition-2', 'card-mobile');
+        //         div.innerHTML = ` 
+        //  <img src="Logos/main-play.svg " alt="" class="play-svg border-radius-20 transition-3 cursor-pointer play-svg-mobile">
+        //                         <img class="border-radius-5"
+        //                             src="${songs[0].image}" alt="">
+        //                         <h1 class="font-white font-white-mobile">${songs[0].name}</h1>
+        //                         <div class="font-small-grey font-small-grey-mobile">${songs[0].artist}</div>`;
+        //         section_1.appendChild(div);
+
 
     }
+
+
 
     document.querySelectorAll('.card').forEach((card) => {
         card.addEventListener('mouseenter', () => {
             const playSvg = card.querySelector('.play-svg');
-            playSvg.classList.add('play-svg-hover');
+            playSvg.classList.add('play-svg-hover', 'play-svg-hover-mobile');
         });
 
         card.addEventListener('mouseleave', () => {
             const playSvg = card.querySelector('.play-svg');
-            playSvg.classList.remove('play-svg-hover');
+            playSvg.classList.remove('play-svg-hover', 'play-svg-hover-mobile');
         });
     });
     document.querySelector('.controls-play-song').addEventListener('click', () => {
@@ -220,10 +255,22 @@ async function addSongs(songs) {
         })
 
     })
-    document.querySelector('#volume-bar').addEventListener('change', (e) => {
-        console.log(parseInt(e.target.value))
-        audio.volume = parseInt(e.target.value) / 100;
-    })
+    document.querySelector('.volume-icon').addEventListener('click', () => {
+
+        if (document.querySelector('.volume-icon').src.endsWith('volumeOn.svg')) {
+            document.querySelector('.volume-icon').src = 'Logos/volumeOff.svg';
+            audio.volume = 0;
+            document.querySelector('#volume-bar').value = '0'
+            console.log(audio.volume, "off")
+        }
+        else {
+            document.querySelector('.volume-icon').src = 'Logos/volumeOn.svg';
+            audio.volume = 0.5; // Volume should be between 0 and 1
+            document.querySelector('#volume-bar').value = '50'
+            console.log(audio.volume, "on")
+
+        }
+    });
 
 
 
@@ -240,7 +287,31 @@ async function addSongs(songs) {
 async function main() {
     let songs = await getSongs();
     audio.volume = 0.5;
-    playMusic(songs[0].name, songs[0].artist, songs, false);
+    let lastsong = localStorage.getItem('Last_song');
+    let username = localStorage.getItem('username');
+    if (username != null) {
+        document.querySelector('.main-buttons').innerHTML = username;
+    }
+    if (lastsong == null) {
+        lastsong = 0
+    }
+    document.querySelector('#volume-bar').value = '50'
+    let section_1 = document.getElementsByClassName("section-1")[0];
+    if (section_1.offsetWidth <= 490) {
+
+        let div = document.createElement('div');
+        div.classList.add('card', 'flex-col', 'hover-background', 'border-radius-10', 'transition-2', 'card-mobile');
+        div.innerHTML = ` 
+ <img src="Logos/main-play.svg " alt="" class="play-svg border-radius-20 transition-3 cursor-pointer play-svg-mobile">
+                        <img class="border-radius-5"
+                            src="${songs[lastsong].image}" alt="">
+                        <h1 class="font-white font-white-mobile">${songs[lastsong].name}</h1>
+                        <div class="font-small-grey font-small-grey-mobile">${songs[lastsong].artist}</div>`;
+
+        section_1.append(div);
+
+    }
+    playMusic(songs[lastsong].name, songs[lastsong].artist, songs, false);
     let message = await addSongs(songs);
     console.log(songs)
     // let song = songs[1].path

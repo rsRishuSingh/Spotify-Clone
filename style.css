@@ -3,169 +3,7 @@
      margin: 0px;
  }
 
- /* For Webkit browsers (e.g., Chrome, Safari) */
- ::-webkit-scrollbar {
-     width: 12px;
- }
 
- ::-webkit-scrollbar-thumb {
-     background-color: #333;
-     /* Dark color for the thumb */
-     border-radius: 6px;
- }
-
- ::-webkit-scrollbar-track {
-     background-color: #222;
-     /* Dark color for the track */
- }
-
-
-
- body {
-     background-color: #000000;
-     font-family: CircularSp, Arial, Helvetica, sans-serif;
- }
-
-
- .font-large-white {
-     color: white;
-     font-size: 24px;
-     font-weight: bolder;
-
- }
-
- .font-small-grey {
-     color: grey;
-     font-size: 12px;
-     font-weight: bold;
-
- }
-
- .font-small-grey-thin {
-     color: grey;
-     font-size: 12px;
-     /* font-weight: bold; */
-
- }
-
- .font-white {
-     color: white;
-     font-size: 16px;
-     font-weight: bold;
-
- }
-
- .font-white-small {
-     color: white;
-     font-size: 14px;
-     font-weight: bold;
-
- }
-
- .font-black {
-     color: rgb(0, 0, 0);
-     font-size: 15px;
-     font-weight: bold;
- }
-
- .font-grey {
-     color: rgb(189, 187, 187);
-     font-size: 14px;
- }
-
- .font-small {
-     color: rgb(167, 167, 167);
-     font-size: 11px;
- }
-
- .background-black-original {
-     background-color: black
- }
-
- .background-black {
-     background-color: #121212
- }
-
- .background-grey {
-     background-color: #242424
- }
-
- .background-blue {
-     background-color: rgb(0, 234, 255);
-     /* color :#ffffff */
-
- }
-
- .background-shady-grey {
-     background-color: #1c1b1b;
-
- }
-
- .background-blue {
-     background-color: rgb(0, 234, 255);
-
- }
-
- .list {
-     list-style: none;
- }
-
- .margin2 {
-     margin: 5px 5px;
-
- }
-
- .a {
-     text-decoration: none;
-     color: gray;
-
- }
-
- .background-white {
-     background-color: rgb(255, 255, 255);
-
-
- }
-
- .border {
-     border: none;
-     text-decoration: none;
-     text-shadow: none;
-     box-shadow: none;
- }
-
- .border-color-white {
-     border: 2px solid white;
- }
-
- .border-radius-20 {
-
-     border-radius: 20px;
- }
-
- .border-radius-5 {
-
-     border-radius: 5px;
- }
-
- .border-radius-10 {
-
-     border-radius: 10px;
- }
-
- .border-radius-10N {
-     border-radius: 10px;
- }
-
- .border-radius-sep {
-     border: 10px solid black;
- }
-
- .button {
-     text-decoration: none;
-     font-weight: bolder;
-
- }
 
  .left-svg {
      width: 24px;
@@ -242,7 +80,7 @@
  }
 
  .hover-opacity:hover {
-     opacity: 0.8;
+     opacity: 0.9;
  }
 
  .tranform {
@@ -373,41 +211,6 @@
 
 
 
- .createplaylist {
-     width: 75%;
-     align-items: center;
-     margin-top: 12px;
-     margin-bottom: 12px;
-
- }
-
- .createplaylist-1 {
-     height: 145px;
- }
-
- .createplaylist-2 {
-     height: 175px;
- }
-
- .createplaylist :first-child {
-     margin-top: 5px;
-     margin-bottom: 2px;
-     padding: 10px;
-     /* padding-bottom: 10px; */
- }
-
- .createplaylist :nth-child(2) {
-     padding: 0px;
-     margin: 7px;
-     /* padding-bottom: 5px; */
- }
-
- .createplaylist :last-child {
-     margin-top: 22px;
-     margin-bottom: 18px;
-     padding: 4px;
-
- }
 
  header {
      height: 65px;
@@ -415,9 +218,9 @@
      /* opacity: 0.6; */
      justify-content: space-between;
      align-items: center;
-     position: sticky;
+     position: fixed;
      top: 0px;
-     width: 72vw;
+     width: 73vw;
      z-index: 10;
 
 
@@ -564,7 +367,7 @@
  .play-bar-container {
      position: fixed;
      width: 73vw;
-     bottom: 0px;
+     bottom: -1px;
      height: 55px;
      padding-bottom: 5px;
  }
@@ -596,7 +399,8 @@
      height: 3px;
      width: 99%;
      position: absolute;
-     top: 0px
+     top: 0px;
+     border-radius: 5px;
  }
 
  .circle {
@@ -660,7 +464,7 @@
 
      header {
 
-         width: 54vw;
+         width: 53vw;
 
      }
 
@@ -668,9 +472,17 @@
          padding: 9px 15px;
      }
 
+
      .play-bar-container {
 
-         width: 55vw;
+         height: 72px;
+         width: 54vw;
+
+     }
+
+     .range>input {
+
+         bottom: 9px;
 
      }
 
@@ -704,19 +516,20 @@
 
      .right-side {
          width: 99vw;
+         margin: 0px !important;
 
      }
 
      header {
 
-         width: 95vw;
+         width: 96vw;
 
      }
 
 
      .play-bar-container {
 
-         width: 95vw;
+         width: 97.5vw;
 
      }
 
@@ -751,9 +564,6 @@
          border-radius: 0px !important;
      }
 
-     /* .home-options {
-         width: 78%;
-     } */
 
      .left-slide {
          left: 0px;
@@ -765,11 +575,7 @@
          border-radius: 0px !important;
      }
 
-     .play-bar-container {
 
-         height: 72px;
-
-     }
 
      .play-bar {
          justify-content: space-between;
@@ -782,6 +588,237 @@
 
      .play-bar>* {
          width: 157px;
+
+     }
+
+     .range>input {
+         bottom: 15px;
+         width: 140px;
+     }
+
+     .volume-duration-controls {
+         justify-content: space-between;
+         row-gap: 10px;
+     }
+
+     .margin {
+         margin: 0px 5px 5px 0px !important;
+     }
+ }
+
+ @media only screen and (max-width : 490px) {
+     header {
+         width: 100vw;
+         height: 70px;
+     }
+
+     .ham-Burger {
+         width: 26px;
+
+     }
+
+     .right-svg {
+         width: 18px;
+
+     }
+
+     .songs-list {
+
+         height: 70%;
+
+     }
+
+
+
+     .direction>img {
+         padding: 10px 10px;
+         margin: 5px;
+     }
+
+     .ham-Burger {
+         padding: 7px 7px !important;
+     }
+
+     .play-bar-container {
+         width: 100%;
+         height: 145px;
+     }
+
+     .main-buttons {
+         padding: 0px;
+         margin: 0px;
+     }
+
+     header button {
+         padding: 10px;
+         padding-left: 17px;
+         padding-right: 17px;
+         margin: 3px;
+     }
+
+
+
+     .left-side {
+         width: 100vw;
+     }
+
+     .external-links {
+         height: 75px;
+     }
+
+     .right-side {
+         width: 100vw;
+
+
+
+     }
+
+     .home {
+         width: 100vw;
+         height: 182px;
+     }
+
+     .libraryContainer {
+         width: 100%;
+         height: calc(92vh - 135px);
+         /* padding-top: 25px; */
+         top: 260px;
+     }
+
+     .left-svg {
+         width: 34px;
+
+     }
+
+     .volume-icon {
+         width: 30px;
+     }
+
+     .margin {
+         margin: 10px 0px 5px 0px;
+     }
+
+     .cardContainer-mobile {
+         height: 100%;
+         width: 100%;
+         /* background-color: #09e85a; */
+         padding: 0px;
+         overflow-y: visible;
+         display: block;
+
+     }
+
+     .section-title-mobile {
+         display: flex;
+         justify-content: flex-start;
+         align-items: flex-end;
+         flex-direction: row;
+         height: 15%;
+         font-size: 28px;
+     }
+
+     .section-1-mobile {
+         display: flex;
+         justify-content: flex-start;
+         align-items: center;
+         flex-direction: column;
+         overflow-y: visible;
+         height: 70%;
+         margin: 20px;
+     }
+
+
+     .card-mobile {
+         width: 320px;
+         height: 420px;
+         /* background-color: red; */
+         padding: 5px;
+         margin: 5px;
+         align-items: center;
+         display: block;
+         position: relative;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         row-gap: 4px;
+         background-color: #1c1b1b;
+     }
+
+     .card-mobile :nth-child(2) {
+         width: 280px;
+         height: 340px;
+         border-radius: 15px;
+
+     }
+
+     .play-bar>* {
+         width: 300px;
+     }
+
+     .controls>* {
+         margin: 5px 15px 5px 15px;
+     }
+
+
+     .play-svg-mobile {
+         padding: 15px;
+         background-color: #09e85a;
+         position: absolute;
+         width: 30px;
+         top: 402px;
+         right: 40px;
+         border-radius: 30px;
+         opacity: 0;
+     }
+
+     .play-bar-mobile {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         justify-content: center;
+         text-align: center;
+         height: 145px;
+         row-gap: 4px;
+     }
+
+     .play-svg-hover-mobile {
+         top: 270px;
+         opacity: 1;
+     }
+
+     .song-info-title :first-child {
+         font-size: 17px;
+     }
+
+     .song-info-title :nth-child(2) {
+         font-size: 14px;
+         font-weight: bold;
+
+     }
+
+     .song-info-title {
+
+         margin-top: 10px;
+     }
+
+     .song-info-duration {
+         font-size: 16px;
+         font-weight: bold;
+     }
+ }
+
+ @media only screen and (max-width : 380px) {
+     .card-mobile {
+         width: 280px;
+         height: 380px;
+
+         padding: 2px;
+         margin: 2px;
+     }
+
+     .card-mobile :nth-child(2) {
+         width: 240px;
+         height: 330px;
 
      }
  }

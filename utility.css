@@ -1,0 +1,190 @@
+ /* For Webkit browsers (e.g., Chrome, Safari) */
+ ::-webkit-scrollbar {
+     width: 12px;
+ }
+
+ ::-webkit-scrollbar-thumb {
+     background-color: #333;
+     /* Dark color for the thumb */
+     border-radius: 6px;
+ }
+
+ ::-webkit-scrollbar-track {
+     background-color: #222;
+     /* Dark color for the track */
+ }
+
+
+
+ body {
+     background-color: #000000;
+     font-family: CircularSp, Arial, Helvetica, sans-serif;
+ }
+
+
+ .font-large-white {
+     color: white;
+     font-size: 24px;
+     font-weight: bolder;
+
+ }
+
+ .font-small-grey {
+     color: grey;
+     font-size: 12px;
+     font-weight: bold;
+
+ }
+
+ .font-small-grey-thin {
+     color: grey;
+     font-size: 12px;
+     /* font-weight: bold; */
+
+ }
+
+ .font-white {
+     color: white;
+     font-size: 16px;
+     font-weight: bold;
+
+ }
+
+ .font-white-mobile {
+     color: white;
+     font-size: 18px;
+     font-weight: bold;
+     letter-spacing: 0cm;
+
+ }
+
+ .font-small-grey-mobile {
+     color: grey;
+     font-size: 16px;
+     font-weight: bold;
+     letter-spacing: 0cm;
+
+ }
+
+
+
+ .font-white-small {
+     color: white;
+     font-size: 14px;
+     font-weight: bold;
+
+ }
+
+ .font-black {
+     color: rgb(0, 0, 0);
+     font-size: 15px;
+     font-weight: bold;
+ }
+
+ .font-grey {
+     color: rgb(189, 187, 187);
+     font-size: 14px;
+ }
+
+ .font-small {
+     color: rgb(167, 167, 167);
+     font-size: 11px;
+ }
+
+ .background-black-original {
+     background-color: black
+ }
+
+ .background-black {
+     background-color: #121212
+ }
+
+ .background-grey {
+     background-color: #242424
+ }
+
+ .background-blue {
+     background-color: rgb(0, 234, 255);
+     /* color :#ffffff */
+
+ }
+
+ .background-shady-grey {
+     background-color: #1c1b1b;
+
+ }
+
+ .background-blue {
+     background-color: rgb(0, 234, 255);
+
+ }
+
+ .list {
+     list-style: none;
+ }
+
+ .margin2 {
+     margin: 5px 5px;
+
+ }
+
+ .a {
+     text-decoration: none;
+     color: gray;
+
+ }
+
+ .background-white {
+     background-color: rgb(255, 255, 255);
+
+
+ }
+
+ .background-green {
+     background-color: greenyellow;
+ }
+
+ .border {
+     border: none;
+     text-decoration: none;
+     text-shadow: none;
+     box-shadow: none;
+ }
+
+ .border-color-white {
+     border: 2px solid white;
+ }
+
+ .border-radius-20 {
+
+     border-radius: 20px;
+ }
+
+ .border-radius-5 {
+
+     border-radius: 5px;
+ }
+
+ .border-radius-10 {
+
+     border-radius: 10px;
+ }
+
+ .border-radius-10N {
+     border-radius: 10px;
+ }
+
+ .border-radius-sep {
+     border: 10px solid black;
+ }
+
+ .button {
+     text-decoration: none;
+     font-weight: bolder;
+
+ }
+
+ a {
+     text-decoration: none;
+     display: block;
+ }

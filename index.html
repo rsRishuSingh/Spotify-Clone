@@ -9,8 +9,9 @@
     <link rel="icon" sizes="16x16" type="image/png"
         href="https://open.spotifycdn.com/cdn/images/favicon16.1c487bff.png" />
 
-
+    <meta name="mobile-web-app-capable" content="yes">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="utility.css">
     <title>Document</title>
 
 </head>
@@ -37,7 +38,7 @@
                         Search</div>
                 </div>
             </div>
-            <div class="demo"></div>
+
             <div class="libraryContainer border-radius-10 background-black margin flex-col align-items-center">
                 <div class="library font-white flex-row">
 
@@ -84,18 +85,19 @@
                         src="Logos/right.svg " alt="move right" width="16px">
 
                 </div>
-                <div class="main-buttons ">
-                    <button
-                        class="transition-5  hover-opacity border-radius-20   border font-black background-white hover-font-style cursor-pointer">Login</button>
-                    <button
-                        class="transition-5  hover-opacity border-radius-20  border  font-white background-blue hover-font-style cursor-pointer">Sign
-                        Up</button>
+                <div class="main-buttons font-large-whitetransition-5  ">
+                    <button class="transition-5   background-white hover-opacity border-radius-20 border  ">
+                        <a href="login.html" class=" font-black  hover-font-style cursor-pointer">Login</a></button>
+
+                    <button class="transition-5 background-blue hover-opacity border-radius-20  border  "><a
+                            href="login.html" class="font-white  hover-font-style cursor-pointer">Signup</a></button>
                 </div>
 
             </header>
-            <div class="cardContainer flex-col class bor">
-                <div class="section-title font-large-white flex-row">Popular Songs</div>
-                <div class="section-1 flex-row wrap ">
+            <div class="cardContainer flex-col class bor cardContainer-mobile">
+                <div class="section-title font-large-white flex-row section-title-mobile">Trending &#x1F525; &#x1F60A;
+                </div>
+                <div class="section-1 flex-row wrap section-1-mobile">
 
 
                 </div>
@@ -103,15 +105,16 @@
             </div>
             <div
                 class="play-bar-container background-shady-grey flex-col align-items-center border-radius-5 justify-content-center">
-                <div class="cursor-pointer status-bar background-white">
+                <div class="cursor-pointer status-bar background-green">
                 </div>
-                <div class="cursor-pointer circle background-white border-radius-20 transition-4"></div>
+                <div class="cursor-pointer circle background-white border-radius-20 transition-4 background-green">
+                </div>
 
-                <div class="play-bar flex-row align-items-center">
-                    <div class="song-info-title "> <span class=" font-white-small"> </span><span
+                <div class="play-bar flex-row align-items-center play-bar-mobile">
+                    <div class="song-info-title  volume-components "> <span class=" font-white-small"> </span><span
                             class="font-grey"></span>
                     </div>
-                    <div class="controls flex-row justify-content-center align-items-center">
+                    <div class="controls flex-row justify-content-center align-items-center volume-components">
                         <img src="Logos/prev.svg"
                             class=" transition-2 cursor-pointer controls-prev-song left-svg invert-0"
                             alt="previous song">
@@ -120,7 +123,8 @@
                         <img src="Logos/next.svg"
                             class="  transition-2 controls-next-song left-svg invert-0 cursor-pointer" alt="next song">
                     </div>
-                    <div class="volume-duration-controls flex-col align-items-center justify-content-center ">
+                    <div
+                        class="volume-duration-controls flex-col align-items-center justify-content-center  volume-components">
                         <div class="volume-controls flex-row align-items-center">
                             <div class="song-info-duration font-white-small "></div>
                             <img src="Logos/volumeOn.svg" alt="VolumeOn" width="22" class="cursor-pointer volume-icon">
