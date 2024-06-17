@@ -241,7 +241,17 @@ async function getSongs() {
     let file = await fetch(source)
     let respose = await file.text()
 
-    let songs_images = ['https://i.scdn.co/image/ab67616d00001e026404721c1943d5069f0805f3', 'https://i.scdn.co/image/ab67616d00001e022ebe695c153f347cf257fc28', 'https://i.scdn.co/image/ab67616d00001e027ea5a422c7cae22626a36893', 'https://i.scdn.co/image/ab67616d00001e02f78d8d3dd6f83183ec4309e2', 'https://i.scdn.co/image/ab67616d00001e028074d75f0e453804efcec351', 'https://i.scdn.co/image/ab67616d00001e02f19e3dac6714edfe85ad9847', 'https://i.scdn.co/image/ab67616d00001e02a6a151ed88a170ae3a81eff5', '	https://i.scdn.co/image/ab67616d00001e020181987950c64ae28aefbd1a']
+    let songs_images = ['https://c.saavncdn.com/984/Bijlee-Bijlee-Punjabi-2021-20220729120741-500x500.jpg',
+        'https://c.saavncdn.com/225/Chaar-Din-Punjabi-2016-20220813160404-500x500.jpg',
+        'https://c.saavncdn.com/047/Unstoppable-R3HAB-Remix-English-2022-20220705225818-500x500.jpg', 'https://c.saavncdn.com/660/Faraar-Hindi-2021-20210113053337-500x500.jpg',
+        'https://c.saavncdn.com/197/FRIENDS-English-2018-20190607042605-500x500.jpg',
+        'https://c.saavncdn.com/588/Ghana-Kasoota-Hindi-2021-20211110172537-500x500.jpg'
+        , 'https://c.saavncdn.com/577/Hamari-Adhuri-Kahani-Hindi-2015-500x500.jpg',
+        'https://c.saavncdn.com/161/Ishare-Tere-Punjabi-2018-20180724123848-500x500.jpg'
+        , 'https://c.saavncdn.com/465/Honey-3-0-Hindi-2024-20240318123128-500x500.jpg',
+        'https://c.saavncdn.com/734/Champagne-Talk-Hindi-2022-20221008011951-500x500.jpg',
+        'https://c.saavncdn.com/257/No-Love-Punjabi-2022-20221104093550-500x500.jpg'
+        , 'https://c.saavncdn.com/663/Pasoori-Punjabi-2022-20220203181058-500x500.jpg']
     let song_data = {
 
     }
