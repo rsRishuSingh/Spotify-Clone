@@ -758,6 +758,7 @@
          position: relative;
          top: 122px;
          padding-bottom: 170px;
+
      }
 
 
@@ -775,6 +776,7 @@
          justify-content: center;
          row-gap: 4px;
          background-color: #1c1b1b;
+
      }
 
      .card-mobile :nth-child(2) {
@@ -856,6 +858,9 @@
          font-weight: bold;
      }
 
+     .main-buttons {
+         font-size: 18px !important;
+     }
  }
 
  @media only screen and (max-width : 380px) {

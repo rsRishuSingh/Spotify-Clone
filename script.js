@@ -364,7 +364,7 @@ async function main() {
     let lastsong = localStorage.getItem('Last_song');
     let username = localStorage.getItem('username');
     if (username != null) {
-        document.querySelector('.main-buttons').innerHTML = username;
+        document.querySelector('.main-buttons').innerHTML = "Hello, " + username;
     }
     if (lastsong == null || lastsong < 0) {
         lastsong = 0
