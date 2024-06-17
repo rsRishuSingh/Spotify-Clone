@@ -47,6 +47,7 @@ async function addSongs_home(songs) {
     </div>`;
         list.appendChild(div);
 
+
     }
     let section_1 = document.getElementsByClassName("section-1")[0];
 
@@ -67,8 +68,8 @@ async function addSongs_home(songs) {
 async function add_cardHome(songs, count) {
     let section_1 = document.getElementsByClassName("section-1")[0];
     section_1.innerHTML = "";
-    document.querySelector('.direction').lastElementChild.style.opacity = 0.6
-    document.querySelector('.direction').firstElementChild.nextElementSibling.style.opacity = 1
+    document.querySelector('.direction').lastElementChild.style.opacity = '0.6'
+    document.querySelector('.direction').firstElementChild.nextElementSibling.style.opacity = '1'
     document.querySelector('.section-1-mobile-2').style.height = '60%';
 
 
@@ -83,30 +84,57 @@ async function add_cardHome(songs, count) {
                             <div class="font-small-grey font-small-grey-mobile">${songs[count].artist}</div>`;
 
     section_1.appendChild(div);
+    console.log("HEllo from home_Card", count)
+
 }
 
 function playMusic(linker1, linker2, songs, pauseOnLoad = true) {
     song_info(linker1, linker2)
+
+
+
     let path = linker1 + "_" + linker2 + ".mp3";
     path = source + path.replaceAll(" ", "%20")
+    // setTimeout(()=>{
+    // },100)
     audio.src = path
-    if (pauseOnLoad == true) {
-        audio.play();
+    let section_1 = document.getElementsByClassName("section-1")[0];
+    let count = getKeyByValue(songs, audio.src);
+
+    // if (pauseOnLoad == true) {
+    //     audio.load()
+
+    //     audio.play();
+
+    // }
+    if (pauseOnLoad) {
+        audio.load(); // Load the new audio source
         document.querySelector('.controls-play-song').src = 'Logos/pause.svg'
 
+        // Add an event listener to play the audio once it can play
+        audio.addEventListener('canplay', () => {
+            audio.play().catch(error => {
+                console.error('Failed to play the audio:', error);
+            });
+        }, { once: true }); // Use `{ once: true }` to ensure this event listener is called only once
     }
-    let count = getKeyByValue(songs, audio.src);
-    let section_1 = document.getElementsByClassName("section-1")[0];
 
+
+    if (document.body.offsetWidth <= 490 && document.querySelector('.direction').lastElementChild.style.opacity == '0.6') {
+        add_cardHome(songs, count)
+        console.log("Hello from master")
+    }
 
     localStorage.setItem('Last_song', count)
     document.querySelector('#volume-bar').value = '50'
-    if (document.body.offsetWidth <= 490 && (count >= 0 || count <= Object.keys(songs).length - 1)) {
+    if (document.body.offsetWidth <= 490 && (count >= 0 || count <= Object.keys(songs).length - 1) && document.querySelector('.direction').lastElementChild.style.opacity == '0.6') {
+        add_cardHome(songs, count)
+    }
+    if (document.body.offsetWidth <= 490) {
         Array.from(document.querySelectorAll('.direction >img')).forEach((img) => {
             img.classList.remove('hover-background-white', 'hover-filter-invert-2')
         })
-        document.querySelector('.direction').lastElementChild.style.opacity = 1
-        document.querySelector('.direction').firstElementChild.nextElementSibling.style.opacity = 0.6
+
     }
 
     document.querySelector('.direction').lastElementChild.addEventListener('click', () => {
@@ -121,8 +149,8 @@ function playMusic(linker1, linker2, songs, pauseOnLoad = true) {
         if (document.body.offsetWidth <= 490 && (count >= 0 || count <= Object.keys(songs).length - 1)) {
 
             section_1.innerHTML = "";
-            document.querySelector('.direction').lastElementChild.style.opacity = 1
-            document.querySelector('.direction').firstElementChild.nextElementSibling.style.opacity = 0.6
+            document.querySelector('.direction').lastElementChild.style.opacity = '1'
+            document.querySelector('.direction').firstElementChild.nextElementSibling.style.opacity = '0.6'
 
             document.querySelector('.section-1-mobile-2').style.height = '110%';
 
@@ -135,27 +163,36 @@ function playMusic(linker1, linker2, songs, pauseOnLoad = true) {
     console.log(count)
     if (count == 0) {
 
-        document.querySelector('.controls-prev-song').style.opacity = 0.5
+        document.querySelector('.controls-prev-song').style.opacity = '0.5'
     }
     if (count == Object.keys(songs).length - 1) {
-        document.querySelector('.controls-next-song').style.opacity = 0.5
+        document.querySelector('.controls-next-song').style.opacity = '0.5'
     }
     if (count > 0) {
-        document.querySelector('.controls-prev-song').style.opacity = 1
+        document.querySelector('.controls-prev-song').style.opacity = '1'
+        function prev(songs, count) {
+            playMusic(songs[count].name, songs[count].artist, songs)
+
+        }
         document.querySelector('.controls-prev-song').addEventListener('click', () => {
-            if (document.querySelector('.direction').lastElementChild.style.opacity == 0.6 && document.body.offsetWidth <= 490) {
+            if (document.body.offsetWidth <= 490 && (count >= 0 || count <= Object.keys(songs).length - 1) && document.querySelector('.direction').lastElementChild.style.opacity == '0.6') {
                 add_cardHome(songs, count - 1)
             }
-            playMusic(songs[count - 1].name, songs[count - 1].artist, songs)
+            prev(songs, count - 1)
         })
     }
     if (count < Object.keys(songs).length - 1) {
-        document.querySelector('.controls-next-song').style.opacity = 1
+        document.querySelector('.controls-next-song').style.opacity = '1'
+        function next(songs, count) {
+
+            playMusic(songs[count].name, songs[count].artist, songs)
+        }
         document.querySelector('.controls-next-song').addEventListener('click', () => {
-            if (document.querySelector('.direction').lastElementChild.style.opacity == 0.6 && document.body.offsetWidth <= 490) {
+            if (document.body.offsetWidth <= 490 && (count >= 0 || count <= Object.keys(songs).length - 1) && document.querySelector('.direction').lastElementChild.style.opacity == '0.6') {
                 add_cardHome(songs, count + 1)
             }
-            playMusic(songs[count + 1].name, songs[count + 1].artist, songs)
+
+            next(songs, count + 1)
         })
     }
     audio.addEventListener("timeupdate", () => {
@@ -168,9 +205,7 @@ function playMusic(linker1, linker2, songs, pauseOnLoad = true) {
             document.querySelector('.song-info-duration').innerHTML = "00:00 / 00:00";
             let count = getKeyByValue(songs, audio.src);
             if (count < Object.keys(songs).length - 1) {
-                if (document.querySelector('.direction').lastElementChild.style.opacity == 0.6 && document.body.offsetWidth <= 490) {
-                    add_cardHome(songs, count + 1)
-                }
+
                 playMusic(songs[count + 1].name, songs[count + 1].artist, songs)
             }
             else {
@@ -331,7 +366,7 @@ async function main() {
     if (username != null) {
         document.querySelector('.main-buttons').innerHTML = username;
     }
-    if (lastsong == null) {
+    if (lastsong == null || lastsong < 0) {
         lastsong = 0
     }
 
