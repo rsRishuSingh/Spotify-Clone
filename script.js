@@ -33,6 +33,57 @@ function song_info(linker1, linker2) {
 
 }
 
+async function addSongs_home(songs) {
+
+    let list = document.getElementsByClassName("songs-list")[0];
+    for (i in songs) {
+        let div = document.createElement('div');
+        div.classList.add('song', 'flex-row', 'align-items-center', 'background-black', 'border-radius-5', 'cursor-pointer', 'hover-fliter-invert', 'transition-2');
+        div.innerHTML = ` 
+    <img src="Logos/music.svg" alt="music">
+    <div class="song-info flex-col border-radius-5">
+        <div class="song-name font-white-small">${songs[i].name}</div>
+        <div class="artist-name font-small-grey-thin">${songs[i].artist}</div>
+    </div>`;
+        list.appendChild(div);
+
+    }
+    let section_1 = document.getElementsByClassName("section-1")[0];
+
+    for (i in songs) {
+        let div = document.createElement('div');
+        div.classList.add('card', 'card-2', 'flex-col', 'hover-background', 'border-radius-10', 'transition-2')
+        div.innerHTML = ` 
+     <img src="Logos/main-play.svg " alt="" class="play-svg border-radius-20 transition-3 cursor-pointer play-svg-mobile-2 ">
+                            <img class="border-radius-5"
+                                src="${songs[i].image}" alt="">
+                            <h1 class="font-white">${songs[i].name}</h1>
+                            <div class="font-small-grey">${songs[i].artist}</div>`;
+        section_1.appendChild(div);
+
+    }
+    return "song add home"
+}
+async function add_cardHome(songs, count) {
+    let section_1 = document.getElementsByClassName("section-1")[0];
+    section_1.innerHTML = "";
+    document.querySelector('.direction').lastElementChild.style.opacity = 0.6
+    document.querySelector('.direction').firstElementChild.nextElementSibling.style.opacity = 1
+    document.querySelector('.section-1-mobile-2').style.height = '60%';
+
+
+    // document.querySelector('.direction').lastElementChild.style.background = none;
+    let div = document.createElement('div');
+    div.classList.add('card', 'flex-col', 'hover-background', 'border-radius-10', 'transition-2', 'card-mobile');
+    div.innerHTML = ` 
+     <img src="Logos/main-play.svg " alt="" class="play-svg border-radius-20 transition-3 cursor-pointer play-svg-mobile">
+                            <img class="border-radius-5"
+                                src="${songs[count].image}" alt="">
+                            <h1 class="font-white font-white-mobile">${songs[count].name}</h1>
+                            <div class="font-small-grey font-small-grey-mobile">${songs[count].artist}</div>`;
+
+    section_1.appendChild(div);
+}
 
 function playMusic(linker1, linker2, songs, pauseOnLoad = true) {
     song_info(linker1, linker2)
@@ -44,26 +95,43 @@ function playMusic(linker1, linker2, songs, pauseOnLoad = true) {
         document.querySelector('.controls-play-song').src = 'Logos/pause.svg'
 
     }
-
-
     let count = getKeyByValue(songs, audio.src);
-    localStorage.setItem('Last_song', count)
-
     let section_1 = document.getElementsByClassName("section-1")[0];
-    if (section_1.offsetWidth <= 490 && (count >= 0 || count <= Object.keys(songs).length - 1)) {
 
-        let div = document.createElement('div');
-        div.classList.add('card', 'flex-col', 'hover-background', 'border-radius-10', 'transition-2', 'card-mobile');
-        div.innerHTML = ` 
- <img src="Logos/main-play.svg " alt="" class="play-svg border-radius-20 transition-3 cursor-pointer play-svg-mobile">
-                        <img class="border-radius-5"
-                            src="${songs[count].image}" alt="">
-                        <h1 class="font-white font-white-mobile">${songs[count].name}</h1>
-                        <div class="font-small-grey font-small-grey-mobile">${songs[count].artist}</div>`;
 
-        section_1.replaceChild(div, section_1.firstElementChild);
-
+    localStorage.setItem('Last_song', count)
+    document.querySelector('#volume-bar').value = '50'
+    if (document.body.offsetWidth <= 490 && (count >= 0 || count <= Object.keys(songs).length - 1)) {
+        Array.from(document.querySelectorAll('.direction >img')).forEach((img) => {
+            img.classList.remove('hover-background-white', 'hover-filter-invert-2')
+        })
+        document.querySelector('.direction').lastElementChild.style.opacity = 1
+        document.querySelector('.direction').firstElementChild.nextElementSibling.style.opacity = 0.6
     }
+
+    document.querySelector('.direction').lastElementChild.addEventListener('click', () => {
+        if (document.body.offsetWidth <= 490 && (count >= 0 || count <= Object.keys(songs).length - 1)) {
+            add_cardHome(songs, count)
+
+        }
+    })
+
+
+    document.querySelector('.direction').firstElementChild.nextElementSibling.addEventListener('click', () => {
+        if (document.body.offsetWidth <= 490 && (count >= 0 || count <= Object.keys(songs).length - 1)) {
+
+            section_1.innerHTML = "";
+            document.querySelector('.direction').lastElementChild.style.opacity = 1
+            document.querySelector('.direction').firstElementChild.nextElementSibling.style.opacity = 0.6
+
+            document.querySelector('.section-1-mobile-2').style.height = '110%';
+
+
+            addSongs_home(songs)
+        }
+
+    })
+
     console.log(count)
     if (count == 0) {
 
@@ -75,12 +143,18 @@ function playMusic(linker1, linker2, songs, pauseOnLoad = true) {
     if (count > 0) {
         document.querySelector('.controls-prev-song').style.opacity = 1
         document.querySelector('.controls-prev-song').addEventListener('click', () => {
+            if (document.querySelector('.direction').lastElementChild.style.opacity == 0.6 && document.body.offsetWidth <= 490) {
+                add_cardHome(songs, count - 1)
+            }
             playMusic(songs[count - 1].name, songs[count - 1].artist, songs)
         })
     }
     if (count < Object.keys(songs).length - 1) {
         document.querySelector('.controls-next-song').style.opacity = 1
         document.querySelector('.controls-next-song').addEventListener('click', () => {
+            if (document.querySelector('.direction').lastElementChild.style.opacity == 0.6 && document.body.offsetWidth <= 490) {
+                add_cardHome(songs, count + 1)
+            }
             playMusic(songs[count + 1].name, songs[count + 1].artist, songs)
         })
     }
@@ -94,6 +168,9 @@ function playMusic(linker1, linker2, songs, pauseOnLoad = true) {
             document.querySelector('.song-info-duration').innerHTML = "00:00 / 00:00";
             let count = getKeyByValue(songs, audio.src);
             if (count < Object.keys(songs).length - 1) {
+                if (document.querySelector('.direction').lastElementChild.style.opacity == 0.6 && document.body.offsetWidth <= 490) {
+                    add_cardHome(songs, count + 1)
+                }
                 playMusic(songs[count + 1].name, songs[count + 1].artist, songs)
             }
             else {
@@ -155,58 +232,20 @@ async function getSongs() {
 
 }
 async function addSongs(songs) {
-    let list = document.getElementsByClassName("songs-list")[0];
-    for (i in songs) {
-        let div = document.createElement('div');
-        div.classList.add('song', 'flex-row', 'align-items-center', 'background-black', 'border-radius-5', 'cursor-pointer', 'hover-fliter-invert', 'transition-2');
-        div.innerHTML = ` 
-    <img src="Logos/music.svg" alt="music">
-    <div class="song-info flex-col border-radius-5">
-        <div class="song-name font-white-small">${songs[i].name}</div>
-        <div class="artist-name font-small-grey-thin">${songs[i].artist}</div>
-    </div>`;
-        list.appendChild(div);
 
-    }
-    let section_1 = document.getElementsByClassName("section-1")[0];
-    if (section_1.offsetWidth > 490)
-        for (i in songs) {
-            let div = document.createElement('div');
-            div.classList.add('card', 'flex-col', 'hover-background', 'border-radius-10', 'transition-2');
-            div.innerHTML = ` 
-     <img src="Logos/main-play.svg " alt="" class="play-svg border-radius-20 transition-3 cursor-pointer">
-                            <img class="border-radius-5"
-                                src="${songs[i].image}" alt="">
-                            <h1 class="font-white">${songs[i].name}</h1>
-                            <div class="font-small-grey">${songs[i].artist}</div>`;
-            section_1.appendChild(div);
-
-        }
-    else {
-        //         let div = document.createElement('div');
-        //         div.classList.add('card', 'flex-col', 'hover-background', 'border-radius-10', 'transition-2', 'card-mobile');
-        //         div.innerHTML = ` 
-        //  <img src="Logos/main-play.svg " alt="" class="play-svg border-radius-20 transition-3 cursor-pointer play-svg-mobile">
-        //                         <img class="border-radius-5"
-        //                             src="${songs[0].image}" alt="">
-        //                         <h1 class="font-white font-white-mobile">${songs[0].name}</h1>
-        //                         <div class="font-small-grey font-small-grey-mobile">${songs[0].artist}</div>`;
-        //         section_1.appendChild(div);
-
-
-    }
-
+    let meta = await addSongs_home(songs)
+    console.log(meta)
 
 
     document.querySelectorAll('.card').forEach((card) => {
         card.addEventListener('mouseenter', () => {
             const playSvg = card.querySelector('.play-svg');
-            playSvg.classList.add('play-svg-hover', 'play-svg-hover-mobile');
+            playSvg.classList.add('play-svg-hover', 'play-svg-hover-mobile', 'play-svg-hover-mobile-2');
         });
 
         card.addEventListener('mouseleave', () => {
             const playSvg = card.querySelector('.play-svg');
-            playSvg.classList.remove('play-svg-hover', 'play-svg-hover-mobile');
+            playSvg.classList.remove('play-svg-hover', 'play-svg-hover-mobile', 'play-svg-hover-mobile-2');
         });
     });
     document.querySelector('.controls-play-song').addEventListener('click', () => {
@@ -295,22 +334,8 @@ async function main() {
     if (lastsong == null) {
         lastsong = 0
     }
-    document.querySelector('#volume-bar').value = '50'
-    let section_1 = document.getElementsByClassName("section-1")[0];
-    if (section_1.offsetWidth <= 490) {
 
-        let div = document.createElement('div');
-        div.classList.add('card', 'flex-col', 'hover-background', 'border-radius-10', 'transition-2', 'card-mobile');
-        div.innerHTML = ` 
- <img src="Logos/main-play.svg " alt="" class="play-svg border-radius-20 transition-3 cursor-pointer play-svg-mobile">
-                        <img class="border-radius-5"
-                            src="${songs[lastsong].image}" alt="">
-                        <h1 class="font-white font-white-mobile">${songs[lastsong].name}</h1>
-                        <div class="font-small-grey font-small-grey-mobile">${songs[lastsong].artist}</div>`;
 
-        section_1.append(div);
-
-    }
     playMusic(songs[lastsong].name, songs[lastsong].artist, songs, false);
     let message = await addSongs(songs);
     console.log(songs)

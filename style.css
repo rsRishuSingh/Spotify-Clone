@@ -105,11 +105,11 @@
      text-decoration: underline;
  }
 
- .hover-fliter-invert:hover {
+ .hover-filter-invert:hover {
      filter: invert(1);
  }
 
- .hover-fliter-invert-2:hover {
+ .hover-filter-invert-2:hover {
      filter: invert(0);
  }
 
@@ -370,6 +370,7 @@
      bottom: -1px;
      height: 55px;
      padding-bottom: 5px;
+     z-index: 2;
  }
 
  /* .controls {
@@ -607,6 +608,7 @@
  }
 
  @media only screen and (max-width : 490px) {
+
      header {
          width: 100vw;
          height: 70px;
@@ -642,11 +644,13 @@
      .play-bar-container {
          width: 100%;
          height: 145px;
+         bottom: -4px;
      }
 
      .main-buttons {
          padding: 0px;
          margin: 0px;
+         margin-right: 15px;
      }
 
      header button {
@@ -686,7 +690,7 @@
      }
 
      .left-svg {
-         width: 34px;
+         width: 30px;
 
      }
 
@@ -708,16 +712,24 @@
 
      }
 
+
+
      .section-title-mobile {
          display: flex;
          justify-content: flex-start;
          align-items: flex-end;
          flex-direction: row;
-         height: 15%;
+         height: 12%;
+         padding: 13px;
          font-size: 28px;
+         position: fixed;
+         z-index: 8;
+         background: #0e0e0e;
+         width: 100%;
      }
 
      .section-1-mobile {
+
          display: flex;
          justify-content: flex-start;
          align-items: center;
@@ -725,6 +737,27 @@
          overflow-y: visible;
          height: 70%;
          margin: 20px;
+     }
+
+     .card-2 {
+         width: 145px;
+         height: 200px;
+
+     }
+
+     .section-1-mobile-2 {
+         display: flex;
+         justify-content: space-evenly;
+         align-items: center;
+         flex-direction: row;
+         overflow-y: visible;
+         height: 110%;
+         margin: 2px;
+         flex-wrap: wrap;
+         row-gap: 8px;
+         position: relative;
+         top: 122px;
+         padding-bottom: 170px;
      }
 
 
@@ -745,8 +778,8 @@
      }
 
      .card-mobile :nth-child(2) {
-         width: 280px;
-         height: 340px;
+         width: 318px;
+         height: 370px;
          border-radius: 15px;
 
      }
@@ -767,7 +800,18 @@
          width: 30px;
          top: 402px;
          right: 40px;
-         border-radius: 30px;
+         border-radius: 30px !important;
+         opacity: 0;
+     }
+
+     .play-svg-mobile-2 {
+         padding: 10px;
+         background-color: #09e85a;
+         position: absolute;
+         width: 20px;
+         top: 150px;
+         right: 20px;
+         border-radius: 30px !important;
          opacity: 0;
      }
 
@@ -784,6 +828,12 @@
      .play-svg-hover-mobile {
          top: 270px;
          opacity: 1;
+     }
+
+     .play-svg-hover-mobile-2 {
+         top: 100px;
+         opacity: 1;
+         z-index: 1;
      }
 
      .song-info-title :first-child {
@@ -805,6 +855,7 @@
          font-size: 16px;
          font-weight: bold;
      }
+
  }
 
  @media only screen and (max-width : 380px) {
@@ -819,6 +870,12 @@
      .card-mobile :nth-child(2) {
          width: 240px;
          height: 330px;
+
+     }
+
+     .card-2 {
+         width: 110px;
+         height: 168px;
 
      }
  }
