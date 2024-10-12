@@ -1,21 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
-*
-{
+
+/* General Reset for margins, paddings, and box-sizing */
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Quicksand', sans-serif;
 }
-body 
-{
+
+/* Styling for the body to center the section and set a background color */
+body {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
   background: #000;
 }
-section 
-{
+
+/* Section container to hold the content with a full view width and height */
+section {
   position: absolute;
   width: 100vw;
   height: 100vh;
@@ -26,8 +29,9 @@ section
   flex-wrap: wrap;
   overflow: hidden;
 }
-section::before 
-{
+
+/* Adding an animated gradient background to the section */
+section::before {
   content: '';
   position: absolute;
   width: 100%;
@@ -35,19 +39,19 @@ section::before
   background: linear-gradient(#000,#0f0,#000);
   animation: animate 5s linear infinite;
 }
-@keyframes animate 
-{
-  0%
-  {
+
+/* Keyframes for animating the gradient background vertically */
+@keyframes animate {
+  0% {
     transform: translateY(-100%);
   }
-  100%
-  {
+  100% {
     transform: translateY(100%);
   }
 }
-section span 
-{
+
+/* Styling for the individual grid spans inside the section */
+section span {
   position: relative;
   display: block;
   width: calc(6.25vw - 2px);
@@ -56,17 +60,18 @@ section span
   z-index: 2;
   transition: 1.5s;
 }
-section span:hover 
-{
+
+/* Changing background color of spans on hover */
+section span:hover {
   background: #0f0;
   transition: 0s;
 }
 
-section .signin
-{
+/* Styling for the sign-in form container */
+section .signin {
   position: absolute;
   width: 400px;
-  background: #222;  
+  background: #222;
   z-index: 1000;
   display: flex;
   justify-content: center;
@@ -75,8 +80,9 @@ section .signin
   border-radius: 4px;
   box-shadow: 0 15px 35px rgba(0,0,0,9);
 }
-section .signin .content 
-{
+
+/* Content area inside the sign-in form container */
+section .signin .content {
   position: relative;
   width: 100%;
   display: flex;
@@ -85,26 +91,30 @@ section .signin .content
   flex-direction: column;
   gap: 40px;
 }
-section .signin .content h2 
-{
+
+/* Title inside the sign-in form */
+section .signin .content h2 {
   font-size: 2em;
   color: #0f0;
   text-transform: uppercase;
 }
-section .signin .content .form 
-{
+
+/* Form styling for the sign-in */
+section .signin .content .form {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 25px;
 }
-section .signin .content .form .inputBox
-{
+
+/* Input box styling inside the form */
+section .signin .content .form .inputBox {
   position: relative;
   width: 100%;
 }
-section .signin .content .form .inputBox input 
-{
+
+/* Styling for input fields */
+section .signin .content .form .inputBox input {
   position: relative;
   width: 100%;
   background: #333;
@@ -116,8 +126,9 @@ section .signin .content .form .inputBox input
   font-weight: 500;
   font-size: 1em;
 }
-section .signin .content .form .inputBox i 
-{
+
+/* Label positioning inside the input box */
+section .signin .content .form .inputBox i {
   position: absolute;
   left: 0;
   padding: 15px 10px;
@@ -126,32 +137,37 @@ section .signin .content .form .inputBox i
   transition: 0.5s;
   pointer-events: none;
 }
+
+/* Animation for the label when input is focused or valid */
 .signin .content .form .inputBox input:focus ~ i,
-.signin .content .form .inputBox input:valid ~ i
-{
+.signin .content .form .inputBox input:valid ~ i {
   transform: translateY(-7.5px);
   font-size: 0.8em;
   color: #fff;
 }
-.signin .content .form .links 
-{
+
+/* Styling for the form links */
+.signin .content .form .links {
   position: relative;
   width: 100%;
   display: flex;
   justify-content: space-between;
 }
-.signin .content .form .links a 
-{
+
+/* Styling for the form links' anchor tags */
+.signin .content .form .links a {
   color: #fff;
   text-decoration: none;
 }
-.signin .content .form .links a:nth-child(2)
-{
+
+/* Special styling for the second anchor link */
+.signin .content .form .links a:nth-child(2) {
   color: #0f0;
   font-weight: 600;
 }
-.signin .content .form .inputBox input[type="submit"]
-{
+
+/* Styling for the submit button */
+.signin .content .form .inputBox input[type="submit"] {
   padding: 10px;
   background: #0f0;
   color: #000;
@@ -160,22 +176,23 @@ section .signin .content .form .inputBox i
   letter-spacing: 0.05em;
   cursor: pointer;
 }
-input[type="submit"]:active
-{
+
+/* Active state for the submit button */
+input[type="submit"]:active {
   opacity: 0.6;
 }
-@media (max-width: 900px)
-{
-  section span 
-  {
+
+/* Media query for smaller screen devices */
+@media (max-width: 900px) {
+  section span {
     width: calc(10vw - 2px);
     height: calc(10vw - 2px);
   }
 }
-@media (max-width: 600px)
-{
-  section span 
-  {
+
+/* Media query for even smaller screen devices */
+@media (max-width: 600px) {
+  section span {
     width: calc(20vw - 2px);
     height: calc(20vw - 2px);
   }
