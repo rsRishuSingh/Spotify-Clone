@@ -20,7 +20,9 @@ This project is a clone of Spotify, the popular music streaming service, created
 - **CSS:** For styling and layout of the application.
 - **JavaScript:** For adding interactivity, such as music playback and search functionality.
 - **API Integration:** Integration with a music API to fetch data about songs and artists.
-
+   
+## Website Link
+- **URL:** https://spotifyjustlisten.freewebhostmost.com/
 ## Installation
 
 1. **Clone the repository:**
