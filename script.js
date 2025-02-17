@@ -1,7 +1,7 @@
-let audio = new Audio();
-letlet audio = new Audio(); // Create a new audio object
+
+let audio = new Audio(); // Create a new audio object
 let source = "audio/" // Base path for audio files
-// let source = "http://192.168.153.250:5500/audio/" // Optional network path for audio files
+
 
 // Function to get the index of the current song based on its file path
 function getKeyByValue(song_data, path) {
