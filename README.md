@@ -21,8 +21,7 @@ This project is available at (https://playsp0tify.netlify.app/)
 - **JavaScript:** For adding interactivity, such as music playback and search functionality.
 - **API Integration:** Integration with a music API to fetch data about songs and artists.
    
-## Website Link
-- **URL:** https://spotifyjustlisten.freewebhostmost.com/
+
 ## Installation
 
 1. **Clone the repository:**
