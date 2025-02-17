@@ -3,7 +3,7 @@
 ## Overview
 
 This project is a clone of Spotify, the popular music streaming service, created using HTML, CSS, and JavaScript. The goal is to replicate the user interface and functionalities of Spotify, offering an engaging platform for users to browse, search, and listen to their favorite music.
-This project is available at (https://spotifyjustlisten.freewebhostmost.com/)
+This project is available at (https://playsp0tify.netlify.app/)
 ## Features
 
 - **Responsive Design:** The application is optimized for various devices, providing a consistent user experience on desktops, tablets, and mobile phones.
